@@ -23,6 +23,7 @@ plot(flowers,insects,pch=19)
 plot(flowers,insects,pch=19, cex=2)
 plot(flowers,insects,pch=19, cex=0.5)
 
+
 # symbol color
 plot(flowers,insects,pch=19, cex=2, col="red") this function is cool
 
