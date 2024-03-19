@@ -67,3 +67,32 @@ im.plotRGB(stacksent, r=3, g=2, b=4)
 
 
 pairs(stacksent)
+
+# Exercise:make a plot whit natural colour and the false colour images.....
+par(mfrow=c(1,2)
+im.plotRGB(stacksent,r=3, g=2, b=1)
+im.plotRGB(stacksent,r=4, g=2, b=1)
+
+
+par(mfrow=c(1,3))
+im.plotRGB(stacksent,r=3, g=2, b=1)
+im.plotRGB(stacksent,r=4, g=2, b=1)
+im.plotRGB(stacksent,r=4, g=3, b=2)
+dev.off()
+
+# nir on green
+im.plotRGB(stacksent,r=3, g=4, b=2)
+
+# nir on blue 
+im.plotRGB(stacksent,r=3, g=2, b=4)
+
+# final multiframe: Exercise: put the four images alltogheter
+par(mfrow=c(2,2)
+im.plotRGB(stacksent, r=3, g=2, b=1) #natural colours
+im.plotRGB(stacksent, r=4, g=3, b=2) #nir on red
+im.plotRGB(stacksent, r=3, g=4, b=2) #nir on green
+im.plotRGB(stacksent, r=3, g=2, b=4) #nir on blue
+
+# correlation of information
+pairs(stacksent)
+b2 # to read the information on b2
