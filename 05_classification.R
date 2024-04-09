@@ -1,4 +1,4 @@
-# quantifying land cover change
+# quantifying land cover variability
 
 # intsall.packages("ggplot2")
 # intsall.packages("patchwork")
@@ -24,7 +24,7 @@ m1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
 m2006 <- im.import("matogrosso_ast_2006209_lrg.jpg")
 
 # classifying images
-m1992c <- im.classify(m1992, num_clusters=2)
+m1992c <- im.classify(m1992, num_clusters=2) #2 per distinguere la foresta dai campi
 
 # 1992
 # class 1 = human
