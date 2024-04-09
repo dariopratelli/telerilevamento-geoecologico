@@ -38,25 +38,35 @@ m2006c <- im.classify(m2006, num_clusters=2)
 
 # frequencies
 f1992 <- freq(m1992c)
+f1992
 
 # proportions
 tot1992 <- ncell(m1992c)
+tot1992
+
 prop1992 = f1992 / tot1992
+prop1992 #guarda valore count
 
 # percentages
 perc1992 = prop1992 * 100
+perc1992 #guarda valore count
 
-# 17% human, 83% forest
+#1992 percentages 17% human, 83% forest
 
 # frequencies
 f2006 <- freq(m2006c)
+f2006
 
 # proportions
 tot2006 <- ncell(m2006c)
+tot2006
+
 prop2006 = f2006 / tot2006
+prop2006
 
 # percentages
 perc2006 = prop2006 * 100
+perc2006
 
 # 1992: 17% human, 83% forest
 # 2006: 55% human, 45% forest
@@ -70,11 +80,11 @@ tabout <- data.frame(class, p1992, p2006)
 tabout
 
 # plotting the output
-ggplot(tabout, aes(x=class, y=p1992, color=class)) + geom_bar(stat="identity", fill="white")
+ggplot(tabout, aes(x=class, y=p1992, color=class)) + geom_bar(stat="identity", fill="white") #aes:means esthetic; stat:means statist
 ggplot(tabout, aes(x=class, y=p2006, color=class)) + geom_bar(stat="identity", fill="white")
 
 # patchwork
-p1 <- ggplot(tabout, aes(x=class, y=p1992, color=class)) + geom_bar(stat="identity", fill="white")
+p1 <- ggplot(tabout, aes(x=class, y=p1992, color=class)) + geom_bar(stat="identity", fill="white") 
 p2 <- ggplot(tabout, aes(x=class, y=p2006, color=class)) + geom_bar(stat="identity", fill="white")
 p1 + p2
 
