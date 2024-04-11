@@ -1,4 +1,6 @@
 # time series analysis
+#second method to quantify chages in time
+#the firs method was based on classification
 
 library(imageRy)
 library(terra)
@@ -10,16 +12,17 @@ EN01 <- im.import("EN_01.png")
 EN13 <- im.import("EN_13.png")
 
 par(mfrow=c(2,1))
-im.plotRGB.auto(EN01)
+im.plotRGB.auto(EN01) #con auto prende le prime 3 e le plotta insime in automatico
 im.plotRGB.auto(EN13)
 
 # using the first element (band) of images
-dif = EN01[[1]] - EN13[[1]]
+difEN = EN01[[1]] - EN13[[1]]
 
 # palette
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
-plot(dif, col=cldif)
-
+plot(difEN, col=cldif)
+dev.off()
+plot(difEN, col=cldif)
 
 ### New example: temperature in Greenland
 
