@@ -1,7 +1,7 @@
 # quantifying land cover variability
 
-# intsall.packages("ggplot2")
-# intsall.packages("patchwork")
+# install.packages("ggplot2")
+# install.packages("patchwork")
 
 library(terra)
 library(imageRy)
