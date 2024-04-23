@@ -35,10 +35,12 @@ im.plotRGB(ocean, 1, 2, 3)
 im.plotRGB(ocean, 2, 1, 3)
 
 # importing Copernicus data
-soil <- rast("c_gls_SSM1km_202404160000_CEURO_S1CSAR_V1.2.1.nc")
+soil <- rast("c_gls_SSM1km_202404210000_CEURO_S1CSAR_V1.2.1.nc")
 plot(soil)
 plot(soil[[1]])
 
 # cropping data
 ext <- c(25, 35, 58, 62)
 soilcrop <- crop(soil, ext)
+plot(soilcrop)
+plot(soilcrop[[1]])
