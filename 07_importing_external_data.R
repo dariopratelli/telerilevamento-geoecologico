@@ -5,7 +5,7 @@ library(RNetCDF) # needed to read Copernicus .nc data
 library(terra)
 library(imageRy)
 
-setwd("/home/duccio/Downloads") 
+setwd("C:/Users/utente/Downloads") 
 # make use of slash instead of backslash
 # Example: C://Documents/ instead of C:\\Documents\ 
 
@@ -27,12 +27,12 @@ plotRGB(eclissi, 3, 1, 3)
 
 # band differencing
 dif = eclissi[[1]] - eclissi[[2]]
-
+plot(dif)
 # import another image
 # Exercise: import another image from the net!
-cratere <- rast("cratere")
-im.plotRGB(cratere, 1, 2, 3)
-im.plotRGB(cratere, 2, 1, 3)
+ocean<- rast("ocean_changes.jpg")
+im.plotRGB(ocean, 1, 2, 3)
+im.plotRGB(ocean, 2, 1, 3)
 
 # importing Copernicus data
 soil <- rast("c_gls_SSM1km_202404160000_CEURO_S1CSAR_V1.2.1.nc")
