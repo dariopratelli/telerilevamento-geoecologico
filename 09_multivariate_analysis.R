@@ -24,7 +24,7 @@ pairs(sentdo)
 # sample <- spatSample(sentdo, 100)
 # sample
 
-# 2. PCA
+# 2. PCA : serve a portare un elemento da n bande a una banda
 # pca <- prcomp(sample)
 
 # variance explained
@@ -35,12 +35,16 @@ pairs(sentdo)
 
 pcimage <- im.pca(sentdo)
 
-# [1] 1719.25654  626.98962   54.63642   34.92315
-tot <- sum(1719.25654,626.98962,54.63642,34.92315)
-1719.25654*100 / tot
+# [1] 1663.53820  511.15684   50.79602   31.13307
 
-viridis <- colorRampPalette(viridis(7))(255)
-plot(pcimage, col=viridis)
+tot <- sum(1663.53820,  511.15684,  50.79602,   31.13307)
+1663.53820*100 / tot #1
+511.15684*100 / tot #2
+#...3
+#...4
+
+plot(pcimage,col=viridis(100))
+plot(pcimage,col=plasma(100))
 
 magma <- colorRampPalette(magma(7))(255)
 plot(pcimage, col=magma)
