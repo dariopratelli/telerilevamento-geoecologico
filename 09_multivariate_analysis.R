@@ -6,14 +6,15 @@ library(viridis) # for the final plot
 
 im.list()
 
-b2 <- im.import("sentinel.dolomites.b2.tif")  
-b3 <- im.import("sentinel.dolomites.b3.tif")  
-b4 <- im.import("sentinel.dolomites.b4.tif")  
-b8 <- im.import("sentinel.dolomites.b8.tif")  
+b2 <- im.import("sentinel.dolomites.b2.tif")  #blue
+b3 <- im.import("sentinel.dolomites.b3.tif")  #green
+b4 <- im.import("sentinel.dolomites.b4.tif")  #red
+b8 <- im.import("sentinel.dolomites.b8.tif")  #nir near infra-red
 
-sentdo <- c(b2, b3, b4, b8)
+sentdo <- c(b2, b3, b4, b8)   #sentdo:sentinel dolomites
 
 im.plotRGB(sentdo, 4, 3, 2)
+im.plotRGB(sentdo, 3, 4, 2)
 
 pairs(sentdo)
 
