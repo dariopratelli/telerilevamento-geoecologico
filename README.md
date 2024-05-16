@@ -14,5 +14,29 @@ This course involves the following masters programs:
 
 > **Keep calm**
 No previus knowledge of R are required
+
 > **External link to the course**
-[UNIBO]https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2023/455369
+[UNIBO](https://www.unibo.it/it/studiare/dottorati-master-specializzazioni-e-altra-formazione/insegnamenti/insegnamento/2023/455369)
+
+## Main packages used
+
+```{r}
+library(imageRy)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
