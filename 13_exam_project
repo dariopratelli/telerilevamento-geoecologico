@@ -60,6 +60,17 @@ plot(NDSI_2023)
 plot(NDSI_2023c)
 
 dev.off()
+
 par(mfrow=c(1,2))
 plot(NDSI_1985c)
 plot(NDSI_2023c)
+
+class <- c("glacier", "not glacier")
+p1985 <- c(26, 70)
+p2023 <- c(8, 88)
+
+tabout <- data.frame(class, p1985, p2023)
+tabout
+
+ggplot(tabout, aes(x=class, y=p1985, color=class)) + geom_bar(stat="identity", fill="white") 
+ggplot(tabout, aes(x=class, y=p2023, color=class)) + geom_bar(stat="identity", fill="white")
