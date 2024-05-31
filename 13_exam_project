@@ -1,8 +1,39 @@
 library(terra)
 library(ggplot2) 
 library(viridis)
- 
-setwd("C:/Users/utente/Desktop/Adamello")
+
+#1975 data 
+setwd("C:/Users/utente/Desktop/Adamello/1975")
+b4_1975<-rast("b4_1975.tif")
+plot(b4_1975)
+b5_1975<-rast("b5_1975.tif")
+plot(b5_1975)
+NDSI_1975<-(b4_1975-b5_1975)/(b4_1975+b5_1975)
+plot(NDSI_1975)
+NDSI_1975c<-NDSI_1975>0.4
+plot(NDSI_1975c)
+
+fre1975<-freq(NDSI_1975c)
+fre1975
+  
+tot1975<-ncell(NDSI_1975c)
+tot1975
+
+prop1975=fre1975/tot1975
+prop1975
+
+perc1975=prop1975*100
+perc1975
+
+par(mfrow=c(2,2))
+plot(b4_1975)
+plot(b5_1975)
+plot(NDSI_1975)
+plot(NDSI_1975c)
+dev.off()
+
+#1985 data
+setwd("C:/Users/utente/Desktop/Adamello/1985")
 b2_1985<-rast("b2_1985.tif")
 plot(b2_1985)
 b5_1985<-rast("b5_1985.tif")
@@ -31,6 +62,96 @@ plot(NDSI_1985)
 plot(NDSI_1985c)
 dev.off()
 
+#1994 data
+setwd("C:/Users/utente/Desktop/Adamello/1994")
+b2_1994<-rast("b2_1994.tif")
+plot(b2_1994)
+b5_1994<-rast("b5_1994.tif")
+plot(b5_1994)
+NDSI_1994<-(b2_1994-b5_1994)/(b2_1994+b5_1994)
+plot(NDSI_1994)
+NDSI_1994c<-NDSI_1994>0.4
+plot(NDSI_1994c)
+
+fre1994<-freq(NDSI_1994c)
+fre1994
+  
+tot1994<-ncell(NDSI_1994c)
+tot1994
+
+prop1994=fre1994/tot1994
+prop1994
+perc1994=prop1994*100
+perc1994
+
+par(mfrow=c(2,2))
+plot(b2_1994)
+plot(b5_1994)
+plot(NDSI_1994)
+plot(NDSI_1994c)
+dev.off()
+
+#2005 data
+setwd("C:/Users/utente/Desktop/Adamello/2005")
+b2_2005<-rast("b2_2005.tif")
+plot(b2_2005)
+b5_2005<-rast("b5_2005.tif")
+plot(b5_2005)
+NDSI_2005<-(b2_2005-b5_2005)/(b2_2005+b5_2005)
+plot(NDSI_2005)
+NDSI_2005c<-NDSI_2005>0.4
+plot(NDSI_2005c)
+
+fre2005<-freq(NDSI_2005c)
+fre2005
+  
+tot2005<-ncell(NDSI_2005c)
+tot2005
+
+prop2005=fre2005/tot2005
+prop2005
+
+perc2005=prop2005*100
+perc2005
+
+par(mfrow=c(2,2))
+plot(b2_2005)
+plot(b5_2005)
+plot(NDSI_2005)
+plot(NDSI_2005c)
+dev.off()
+
+#2015 data
+setwd("C:/Users/utente/Desktop/Adamello/2015")
+b3_2015<-rast("b3_2015.tif")
+plot(b3_2015)
+b6_2015<-rast("b6_2015.tif")
+plot(b6_2015)
+NDSI_2015<-(b3_2015-b6_2015)/(b3_2015+b6_2015)
+plot(NDSI_2015)
+NDSI_2015c<-NDSI_2015>0.4
+plot(NDSI_2015c)
+
+fre2015<-freq(NDSI_2015c)
+fre2015
+  
+tot2015<-ncell(NDSI_2015c)
+tot2015
+
+prop2015=fre2015/tot2015
+prop2015
+
+perc2015=prop2015*100
+perc2015
+
+par(mfrow=c(2,2))
+plot(b3_2015)
+plot(b6_2015)
+plot(NDSI_2015)
+plot(NDSI_2015c)
+dev.off()
+
+#2023 data
 setwd("C:/Users/utente/Desktop/Adamello/2023")
 b3_2023<-rast("b3_2023.tif")
 plot(b3_2023)
@@ -61,9 +182,14 @@ plot(NDSI_2023c)
 
 dev.off()
 
-par(mfrow=c(1,2))
+par(mfrow=c(2,3))
+plot(NDSI_1975c)
 plot(NDSI_1985c)
+plot(NDSI_1994c)
+plot(NDSI_2005c)
+plot(NDSI_2015c)
 plot(NDSI_2023c)
+
 
 class <- c("glacier", "not glacier")
 p1985 <- c(26, 70)
