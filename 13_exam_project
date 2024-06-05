@@ -2,93 +2,63 @@ library(terra)
 library(ggplot2) 
 library(viridis)
 
-#1975 data 
-setwd("C:/Users/utente/Desktop/Adamello/1975")
-b4_1975<-rast("b4_1975.tif")
-plot(b4_1975)
-b5_1975<-rast("b5_1975.tif")
-plot(b5_1975)
-NDSI_1975<-(b4_1975-b5_1975)/(b4_1975+b5_1975)
-plot(NDSI_1975)
-NDSI_1975c<-NDSI_1975>0.4
-plot(NDSI_1975c)
+#1986 data
+setwd("C:/Users/utente/Desktop/Adamello/1986")
+b2_1986<-rast("b2_1986.tif")
+plot(b2_1986)
+b5_1986<-rast("b5_1986.tif")
+plot(b5_1986)
+NDSI_1986<-(b2_1986-b5_1986)/(b2_1986+b5_1986)
+plot(NDSI_1986)
+NDSI_1986c<-NDSI_1986>0.4
+plot(NDSI_1986c)
 
-fre1975<-freq(NDSI_1975c)
-fre1975
+fre1986<-freq(NDSI_1986c)
+fre1986
   
-tot1975<-ncell(NDSI_1975c)
-tot1975
+tot1986<-ncell(NDSI_1986c)
+tot1986
 
-prop1975=fre1975/tot1975
-prop1975
+prop1986=fre1986/tot1986
+prop1986
 
-perc1975=prop1975*100
-perc1975
+perc1986=prop1986*100
+perc1986
 
 par(mfrow=c(2,2))
-plot(b4_1975)
-plot(b5_1975)
-plot(NDSI_1975)
-plot(NDSI_1975c)
+plot(b2_1986)
+plot(b5_1986)
+plot(NDSI_1986)
+plot(NDSI_1986c)
 dev.off()
 
-#1985 data
-setwd("C:/Users/utente/Desktop/Adamello/1985")
-b2_1985<-rast("b2_1985.tif")
-plot(b2_1985)
-b5_1985<-rast("b5_1985.tif")
-plot(b5_1985)
-NDSI_1985<-(b2_1985-b5_1985)/(b2_1985+b5_1985)
-plot(NDSI_1985)
-NDSI_1985c<-NDSI_1985>0.4
-plot(NDSI_1985c)
+#1997 data
+setwd("C:/Users/utente/Desktop/Adamello/1997")
+b2_1997<-rast("b2_1997.tif")
+plot(b2_1997)
+b5_1997<-rast("b5_1997.tif")
+plot(b5_1997)
+NDSI_1997<-(b2_1997-b5_1997)/(b2_1997+b5_1997)
+plot(NDSI_1997)
+NDSI_1997c<-NDSI_1997>0.4
+plot(NDSI_1997c)
 
-fre1985<-freq(NDSI_1985c)
-fre1985
+fre1997<-freq(NDSI_19977c)
+fre1997
   
-tot1985<-ncell(NDSI_1985c)
-tot1985
+tot1997<-ncell(NDSI_1997c)
+tot1997
 
-prop1985=fre1985/tot1985
-prop1985
-
-perc1985=prop1985*100
-perc1985
+prop1997=fre1997/tot1997
+prop1997
+perc1997=prop1997*100
+perc1997
 
 par(mfrow=c(2,2))
-plot(b2_1985)
-plot(b5_1985)
-plot(NDSI_1985)
-plot(NDSI_1985c)
-dev.off()
-
-#1994 data
-setwd("C:/Users/utente/Desktop/Adamello/1994")
-b2_1994<-rast("b2_1994.tif")
-plot(b2_1994)
-b5_1994<-rast("b5_1994.tif")
-plot(b5_1994)
-NDSI_1994<-(b2_1994-b5_1994)/(b2_1994+b5_1994)
-plot(NDSI_1994)
-NDSI_1994c<-NDSI_1994>0.4
-plot(NDSI_1994c)
-
-fre1994<-freq(NDSI_1994c)
-fre1994
-  
-tot1994<-ncell(NDSI_1994c)
-tot1994
-
-prop1994=fre1994/tot1994
-prop1994
-perc1994=prop1994*100
-perc1994
-
-par(mfrow=c(2,2))
-plot(b2_1994)
-plot(b5_1994)
-plot(NDSI_1994)
-plot(NDSI_1994c)
+plot(b2_1997)
+plot(b5_1997)
+plot(NDSI_1997)
+plot(NDSI_1997c)
 dev.off()
 
 #2005 data
@@ -121,38 +91,38 @@ plot(NDSI_2005)
 plot(NDSI_2005c)
 dev.off()
 
-#2015 data
-setwd("C:/Users/utente/Desktop/Adamello/2015")
-b3_2015<-rast("b3_2015.tif")
-plot(b3_2015)
-b6_2015<-rast("b6_2015.tif")
-plot(b6_2015)
-NDSI_2015<-(b3_2015-b6_2015)/(b3_2015+b6_2015)
-plot(NDSI_2015)
-NDSI_2015c<-NDSI_2015>0.4
-plot(NDSI_2015c)
+#2013 data
+setwd("C:/Users/utente/Desktop/Adamello/2013")
+b3_2013<-rast("b3_2013.tif")
+plot(b3_2013)
+b6_2013<-rast("b6_2013.tif")
+plot(b6_2013)
+NDSI_2013<-(b3_2013-b6_2013)/(b3_2013+b6_2013)
+plot(NDSI_2013)
+NDSI_2013c<-NDSI_2013>0.4
+plot(NDSI_2013c)
 
-fre2015<-freq(NDSI_2015c)
-fre2015
+fre2013<-freq(NDSI_2013c)
+fre2013
   
-tot2015<-ncell(NDSI_2015c)
-tot2015
+tot2013<-ncell(NDSI_2013c)
+tot2013
 
-prop2015=fre2015/tot2015
-prop2015
+prop2013=fre2013/tot2013
+prop2013
 
-perc2015=prop2015*100
-perc2015
+perc2013=prop2013*100
+perc2013
 
 par(mfrow=c(2,2))
-plot(b3_2015)
-plot(b6_2015)
-plot(NDSI_2015)
-plot(NDSI_2015c)
+plot(b3_2013)
+plot(b6_2013)
+plot(NDSI_2013)
+plot(NDSI_2013c)
 dev.off()
 
 #2023 data
-setwd("C:/Users/utente/Desktop/Adamello/2023")
+setwd("C:/Uses/utente/Desktop/Adamello/2023")
 b3_2023<-rast("b3_2023.tif")
 plot(b3_2023)
 b6_2023<-rast("b6_2023.tif")
@@ -160,7 +130,7 @@ plot(b6_2023)
 NDSI_2023<-(b3_2023-b6_2023)/(b3_2023+b6_2023)
 plot(NDSI_2023)
 NDSI_2023c<-NDSI_2023>0.4
-NDSI_2023c
+plot(NDSI_2023c)
 
 fre2023<-freq(NDSI_2023c)
 fre2023
@@ -183,10 +153,9 @@ plot(NDSI_2023c)
 dev.off()
 
 par(mfrow=c(2,3))
-plot(NDSI_1975c)
-plot(NDSI_1985c)
-plot(NDSI_1994c)
+plot(NDSI_1986c)
+plot(NDSI_1997c)
 plot(NDSI_2005c)
-plot(NDSI_2015c)
+plot(NDSI_2013c)
 plot(NDSI_2023c)
 
