@@ -43,7 +43,7 @@ plot(NDSI_1997)
 NDSI_1997c<-NDSI_1997>0.4
 plot(NDSI_1997c)
 
-fre1997<-freq(NDSI_19977c)
+fre1997<-freq(NDSI_1997c)
 fre1997
   
 tot1997<-ncell(NDSI_1997c)
