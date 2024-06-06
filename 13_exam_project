@@ -121,8 +121,40 @@ plot(NDSI_2013)
 plot(NDSI_2013c)
 dev.off()
 
+#2021 data
+setwd("C:/Users/utente/Desktop/Adamello/2021")
+b3_2021<-rast("b3_2021.tif")
+plot(b3_2021)
+b6_2021<-rast("b6_2021.tif")
+plot(b6_2021)
+NDSI_2021<-(b3_2021-b6_2021)/(b3_2021+b6_2021)
+plot(NDSI_2021)
+NDSI_2021c<-NDSI_2021>0.4
+plot(NDSI_2021c)
+
+fre2021<-freq(NDSI_2021c)
+fre2021
+
+tot2021<-ncell(NDSI_2021c)
+tot2021
+
+prop2021=fre2021/tot2021
+prop2021
+
+perc2021=prop2021*100
+perc2021
+
+par(mfrow=c(2,2))
+plot(b3_2021)
+plot(b6_2021)
+plot(NDSI_2021)
+plot(NDSI_2021c)
+
+dev.off()
+
+
 #2023 data
-setwd("C:/Uses/utente/Desktop/Adamello/2023")
+setwd("C:/Users/utente/Desktop/Adamello/2023")
 b3_2023<-rast("b3_2023.tif")
 plot(b3_2023)
 b6_2023<-rast("b6_2023.tif")
@@ -157,5 +189,6 @@ plot(NDSI_1986c)
 plot(NDSI_1997c)
 plot(NDSI_2005c)
 plot(NDSI_2013c)
+plot(NDSI_2021c)
 plot(NDSI_2023c)
 
