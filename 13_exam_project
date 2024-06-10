@@ -227,3 +227,15 @@ sup2021<-sup_foto*0.1445689
 sup2021
 sup2023<-sup_foto*0.08151229
 sup2023
+
+
+
+# Dati di esempio
+date <- c("1986", "1997", "2005", "2013", "2021", "2023")
+superficie #km^2<- c(sup1986,sup1997,sup2005,sup2013,sup2021,sup2023)
+
+# Creare un dataframe
+df <- data.frame(date = as.Date(date), superficie = superficie)
+
+# Creare un grafico a colonne con ggplot2
+ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "white") + labs(title = "Superficie del ghiacciaio 1986-2023", x = "Data", y = "Superficie") + scale_x_date(date_labels = "%b-%Y") + theme_minimal()
