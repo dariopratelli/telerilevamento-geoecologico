@@ -3,7 +3,7 @@ library(ggplot2)
 library(viridis)
 
 # Area foto in km2=16,872413
-a_f<-16.872413
+sup_foto<-16.872413
 
 #1986 data
 setwd("C:/Users/utente/Desktop/Adamello/1986")
@@ -215,10 +215,15 @@ ggplot(tabout, aes(x=class, y=y2013, color=class)) + geom_bar(stat="identity", f
 ggplot(tabout, aes(x=class, y=y2021, color=class)) + geom_bar(stat="identity", fill="white")
 ggplot(tabout, aes(x=class, y=y2023, color=class)) + geom_bar(stat="identity", fill="white")
 
-p1986 <- ggplot(tabout, aes(x=class, y=y1986, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p1997 <- ggplot(tabout, aes(x=class, y=y1997, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p2005 <- ggplot(tabout, aes(x=class, y=y2005, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p2013 <- ggplot(tabout, aes(x=class, y=y2013, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p2021 <- ggplot(tabout, aes(x=class, y=y2021, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p2023 <- ggplot(tabout, aes(x=class, y=y2023, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
-p1986+p1997+p2005+p2013+p2021+p2023 ?????????
+sup1986<-sup_foto*0.2831654
+sup1986
+sup1997<-sup_foto*0.2464459
+sup1997
+sup2005<-sup_foto*0.2078814
+sup2005
+sup2013<-sup_foto*0.2143764
+sup2013
+sup2021<-sup_foto*0.1445689
+sup2021
+sup2023<-sup_foto*0.08151229
+sup2023
