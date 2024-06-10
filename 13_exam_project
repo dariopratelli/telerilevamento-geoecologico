@@ -2,6 +2,9 @@ library(terra)
 library(ggplot2) 
 library(viridis)
 
+# Area foto in km2=16,872413
+a_f<-16.872413
+
 #1986 data
 setwd("C:/Users/utente/Desktop/Adamello/1986")
 b2_1986<-rast("b2_1986.tif")
@@ -192,3 +195,30 @@ plot(NDSI_2013c)
 plot(NDSI_2021c)
 plot(NDSI_2023c)
 
+dev.off()
+
+class <- c("glacier","no glacier")
+y1986 <- c(28,72)
+y1997 <- c(25,75)
+y2005 <- c(21,79)
+y2013 <- c(22,78)
+y2021 <- c(15,85)
+y2023 <- c(8,92)
+
+tabout <- data.frame(class,y1986,y1997,y2005,y2013,y2021,y2023)
+tabout
+
+ggplot(tabout, aes(x=class, y=y1986, color=class)) + geom_bar(stat="identity", fill="white") 
+ggplot(tabout, aes(x=class, y=y1997, color=class)) + geom_bar(stat="identity", fill="white")
+ggplot(tabout, aes(x=class, y=y2005, color=class)) + geom_bar(stat="identity", fill="white") 
+ggplot(tabout, aes(x=class, y=y2013, color=class)) + geom_bar(stat="identity", fill="white")
+ggplot(tabout, aes(x=class, y=y2021, color=class)) + geom_bar(stat="identity", fill="white")
+ggplot(tabout, aes(x=class, y=y2023, color=class)) + geom_bar(stat="identity", fill="white")
+
+p1986 <- ggplot(tabout, aes(x=class, y=y1986, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p1997 <- ggplot(tabout, aes(x=class, y=y1997, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2005 <- ggplot(tabout, aes(x=class, y=y2005, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2013 <- ggplot(tabout, aes(x=class, y=y2013, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2021 <- ggplot(tabout, aes(x=class, y=y2021, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2023 <- ggplot(tabout, aes(x=class, y=y2023, color=class)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p1986+p1997+p2005+p2013+p2021+p2023 ?????????
