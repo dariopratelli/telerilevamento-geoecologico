@@ -1,9 +1,7 @@
 library(terra)
 library(ggplot2) 
 library(viridis)
-
-# Area foto in km2=16,872413
-sup_foto<-16.872413
+library(patchwork)
 
 #1986 data
 setwd("C:/Users/utente/Desktop/Adamello/1986")
@@ -18,7 +16,7 @@ plot(NDSI_1986c)
 
 fre1986<-freq(NDSI_1986c)
 fre1986
-  
+
 tot1986<-ncell(NDSI_1986c)
 tot1986
 
@@ -48,7 +46,7 @@ plot(NDSI_1997c)
 
 fre1997<-freq(NDSI_1997c)
 fre1997
-  
+
 tot1997<-ncell(NDSI_1997c)
 tot1997
 
@@ -77,7 +75,7 @@ plot(NDSI_2005c)
 
 fre2005<-freq(NDSI_2005c)
 fre2005
-  
+
 tot2005<-ncell(NDSI_2005c)
 tot2005
 
@@ -97,6 +95,7 @@ dev.off()
 #2013 data
 setwd("C:/Users/utente/Desktop/Adamello/2013")
 b3_2013<-rast("b3_2013.tif")
+
 plot(b3_2013)
 b6_2013<-rast("b6_2013.tif")
 plot(b6_2013)
@@ -107,11 +106,12 @@ plot(NDSI_2013c)
 
 fre2013<-freq(NDSI_2013c)
 fre2013
-  
+
 tot2013<-ncell(NDSI_2013c)
 tot2013
 
 prop2013=fre2013/tot2013
+
 prop2013
 
 perc2013=prop2013*100
@@ -153,8 +153,8 @@ plot(b6_2021)
 plot(NDSI_2021)
 plot(NDSI_2021c)
 
-dev.off()
 
+dev.off()
 
 #2023 data
 setwd("C:/Users/utente/Desktop/Adamello/2023")
@@ -196,46 +196,51 @@ plot(NDSI_2021c)
 plot(NDSI_2023c)
 
 dev.off()
-
 class <- c("glacier","no glacier")
-y1986 <- c(28,72)
-y1997 <- c(25,75)
-y2005 <- c(21,79)
-y2013 <- c(22,78)
-y2021 <- c(15,85)
-y2023 <- c(8,92)
+perc1986 <- c(28,72)
+perc1997 <- c(25,75)
+perc2005 <- c(21,79)
+perc2013 <- c(22,78)
+perc2021 <- c(15,85)
+perc2023 <- c(8,92)
 
-tabout <- data.frame(class,y1986,y1997,y2005,y2013,y2021,y2023)
+tabout <- data.frame(class,perc1986,perc1997,perc2005,perc2013,perc2021,perc2023)
 tabout
 
-ggplot(tabout, aes(x=class, y=y1986, color=class)) + geom_bar(stat="identity", fill="white") 
-ggplot(tabout, aes(x=class, y=y1997, color=class)) + geom_bar(stat="identity", fill="white")
-ggplot(tabout, aes(x=class, y=y2005, color=class)) + geom_bar(stat="identity", fill="white") 
-ggplot(tabout, aes(x=class, y=y2013, color=class)) + geom_bar(stat="identity", fill="white")
-ggplot(tabout, aes(x=class, y=y2021, color=class)) + geom_bar(stat="identity", fill="white")
-ggplot(tabout, aes(x=class, y=y2023, color=class)) + geom_bar(stat="identity", fill="white")
 
+p1986 <- ggplot(tabout, aes(x=class, y=perc1986, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("1986")+ylim(c(0,100))
+p1997 <- ggplot(tabout, aes(x=class, y=perc1997, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("1997")+ylim(c(0,100))
+p2005 <- ggplot(tabout, aes(x=class, y=perc2005, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2005")+ylim(c(0,100))
+p2013 <- ggplot(tabout, aes(x=class, y=perc2013, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2013")+ylim(c(0,100))
+p2021 <- ggplot(tabout, aes(x=class, y=perc2021, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2021")+ylim(c(0,100))
+p2023 <- ggplot(tabout, aes(x=class, y=perc2023, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2023")+ylim(c(0,100))
+
+# Utilizzare patchwork per combinare i grafici
+combined_plot <- p1986 + p1997 + p2005 + p2013 + p2021 + p2023
+print(combined_plot)
+
+sup_foto<-16.872413
 sup1986<-sup_foto*0.2831654
-sup1986
+sup1986 #4.777684 km²
 sup1997<-sup_foto*0.2464459
-sup1997
+sup1997 #4.158137 km²
 sup2005<-sup_foto*0.2078814
-sup2005
+sup2005 #3.507461 km²
 sup2013<-sup_foto*0.2143764
-sup2013
+sup2013 #3.617047 km²
 sup2021<-sup_foto*0.1445689
-sup2021
+sup2021 #2.439226 km²
 sup2023<-sup_foto*0.08151229
-sup2023
+sup2023 #1.375309 km²
 
-
-
-# Dati di esempio
 date <- c("1986", "1997", "2005", "2013", "2021", "2023")
-superficie #km^2<- c(sup1986,sup1997,sup2005,sup2013,sup2021,sup2023)
+superficie<- c(sup1986,sup1997,sup2005,sup2013,sup2021,sup2023)
 
-# Creare un dataframe
-df <- data.frame(date = as.Date(date), superficie = superficie)
+df <- data.frame(date = date, superficie = superficie)
+print(df)
 
 # Creare un grafico a colonne con ggplot2
-ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "white") + labs(title = "Superficie del ghiacciaio 1986-2023", x = "Data", y = "Superficie") + scale_x_date(date_labels = "%b-%Y") + theme_minimal()
+ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = superficie), vjust = -0.3, color = "white", size = 3.5) + labs(title = "Dimensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
+
+
+
