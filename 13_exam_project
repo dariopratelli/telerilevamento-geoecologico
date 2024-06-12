@@ -1,28 +1,43 @@
+#Time serie sull'estensione del Ghiacciaio dell'Adamello 
+
 library(terra)
 library(ggplot2) 
-library(viridis)
+library(raster)
 library(patchwork)
 
-#1986 data
-setwd("C:/Users/utente/Desktop/Adamello/1986")
-b2_1986<-rast("b2_1986.tif")
+#Tutte le immagini sono state acquisite dai satelliti Landsat 4-5 per gli anni 1986,1997,2005 e dai satelliti Landsat 8-9 per gli anni 2013,2021,2023 tramite il sito USGS
+#Successivamnete, tramite estrazione con maschera, sono state ottenute immagini più precise????? della zona di interesse
+
+#Dati 1986
+#Importo le immagini del 1986, in particolare le bande b2 e b5 che mi serviranno per calcolare l'indice NDSI(Normalized Difference Snow Index)
+setwd("C:/Users/utente/Desktop/Adamello/1986") 
+RGB_1986<-rast("RGB_1986.tif") #importo l'immagine a colori
+plot(RGB_1986)
+b2_1986<-rast("b2_1986.tif") #importo la banda b2 del verde
 plot(b2_1986)
-b5_1986<-rast("b5_1986.tif")
+b5_1986<-rast("b5_1986.tif") #importo la banda dello SWIR (Short-Wave Infrared)
 plot(b5_1986)
-NDSI_1986<-(b2_1986-b5_1986)/(b2_1986+b5_1986)
+NDSI_1986<-(b2_1986-b5_1986)/(b2_1986+b5_1986) #Calcolo l'indece NDSI 
 plot(NDSI_1986)
-NDSI_1986c<-NDSI_1986>0.4
+NDSI_1986c<-NDSI_1986>0.4 #metto una soglia di 0.4: valori dell'NDSI superiori a 0.4 sono generalmente associati alla presenza di neve, mentre valori inferiori a 0.4 possono indicare altre superfici
 plot(NDSI_1986c)
 
-fre1986<-freq(NDSI_1986c)
+#Calcolo la frequenza dei valori 
+fre1986<-freq(NDSI_1986c) 
 fre1986
+#layer value  count
+#1     1     0 134007
+#2     1     1  53102
 
+#Calcolo il numero totale dei pixel dell'immagine
 tot1986<-ncell(NDSI_1986c)
-tot1986
+tot1986 #187530
 
+#Calcolo la proporzione: numero di pixcel di una classe / il totale dei pixcel
 prop1986=fre1986/tot1986
 prop1986
 
+#Percentuali
 perc1986=prop1986*100
 perc1986
 
@@ -35,6 +50,8 @@ dev.off()
 
 #1997 data
 setwd("C:/Users/utente/Desktop/Adamello/1997")
+RGB_1997<-rast("RGB_1997.tif")
+plot(RGB_1997)
 b2_1997<-rast("b2_1997.tif")
 plot(b2_1997)
 b5_1997<-rast("b5_1997.tif")
@@ -64,6 +81,8 @@ dev.off()
 
 #2005 data
 setwd("C:/Users/utente/Desktop/Adamello/2005")
+RGB_2005<-rast("RGB_2005.tif")
+plot(RGB_2005)
 b2_2005<-rast("b2_2005.tif")
 plot(b2_2005)
 b5_2005<-rast("b5_2005.tif")
@@ -94,8 +113,9 @@ dev.off()
 
 #2013 data
 setwd("C:/Users/utente/Desktop/Adamello/2013")
+RGB_2013<-rast("RGB_2013.tif")
+plot(RGB_2013)
 b3_2013<-rast("b3_2013.tif")
-
 plot(b3_2013)
 b6_2013<-rast("b6_2013.tif")
 plot(b6_2013)
@@ -126,6 +146,8 @@ dev.off()
 
 #2021 data
 setwd("C:/Users/utente/Desktop/Adamello/2021")
+RGB_2021<-rast("RGB_2021.tif")
+plot(RGB_2021)
 b3_2021<-rast("b3_2021.tif")
 plot(b3_2021)
 b6_2021<-rast("b6_2021.tif")
@@ -158,6 +180,8 @@ dev.off()
 
 #2023 data
 setwd("C:/Users/utente/Desktop/Adamello/2023")
+RGB_2023<-rast("RGB_2023.tif")
+plot(RGB_2023)
 b3_2023<-rast("b3_2023.tif")
 plot(b3_2023)
 b6_2023<-rast("b6_2023.tif")
@@ -240,7 +264,7 @@ df <- data.frame(date = date, superficie = superficie)
 print(df)
 
 # Creare un grafico a colonne con ggplot2
-ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = superficie), vjust = -0.3, color = "white", size = 3.5) + labs(title = "Dimensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
+ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = superficie), vjust = 1.5, hjust = 1, angle = 65, color = "white", size = 2) + labs(title = "Dimensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
 
-
+######################################################################
 
