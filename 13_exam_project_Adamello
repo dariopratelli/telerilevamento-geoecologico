@@ -13,25 +13,22 @@ library(patchwork)
 setwd("C:/Users/utente/Desktop/Adamello/1986") 
 RGB_1986<-rast("RGB_1986.tif") #importo l'immagine a colori
 plot(RGB_1986)
-b2_1986<-rast("b2_1986.tif") #importo la banda b2 del verde
+b2_1986<-rast("b2_1986.tif") #importo la banda del verde
 plot(b2_1986)
 b5_1986<-rast("b5_1986.tif") #importo la banda dello SWIR (Short-Wave Infrared)
 plot(b5_1986)
-NDSI_1986<-(b2_1986-b5_1986)/(b2_1986+b5_1986) #Calcolo l'indece NDSI 
+NDSI_1986<-(b2_1986-b5_1986)/(b2_1986+b5_1986) #Calcolo l'indece NDSI: (green-SWIR)/(green+SWIR)
 plot(NDSI_1986)
-NDSI_1986c<-NDSI_1986>0.4 #metto una soglia di 0.4: valori dell'NDSI superiori a 0.4 sono generalmente associati alla presenza di neve, mentre valori inferiori a 0.4 possono indicare altre superfici
+NDSI_1986c<-NDSI_1986>0.4 #metto una soglia di 0.4: valori dell'NDSI superiori a 0.4 sono associati alla presenza di neve, mentre valori inferiori a 0.4 possono indicare altre superfici
 plot(NDSI_1986c)
 
 #Calcolo la frequenza dei valori 
 fre1986<-freq(NDSI_1986c) 
 fre1986
-#layer value  count
-#1     1     0 134007
-#2     1     1  53102
 
 #Calcolo il numero totale dei pixel dell'immagine
 tot1986<-ncell(NDSI_1986c)
-tot1986 #187530
+tot1986 
 
 #Calcolo la proporzione: numero di pixcel di una classe / il totale dei pixcel
 prop1986=fre1986/tot1986
@@ -41,14 +38,18 @@ prop1986
 perc1986=prop1986*100
 perc1986
 
+#Plotto insieme le immagini delle bande del verde, dello SWIR e dell'indice NDSI 
 par(mfrow=c(2,2))
 plot(b2_1986)
 plot(b5_1986)
 plot(NDSI_1986)
 plot(NDSI_1986c)
+
 dev.off()
 
-#1997 data
+#Ripeto gli stessi passaggi anche per gli anni 1997,2005,2013,2021,2023
+
+#Dati 1997
 setwd("C:/Users/utente/Desktop/Adamello/1997")
 RGB_1997<-rast("RGB_1997.tif")
 plot(RGB_1997)
@@ -77,9 +78,10 @@ plot(b2_1997)
 plot(b5_1997)
 plot(NDSI_1997)
 plot(NDSI_1997c)
+
 dev.off()
 
-#2005 data
+#Dati 2005
 setwd("C:/Users/utente/Desktop/Adamello/2005")
 RGB_2005<-rast("RGB_2005.tif")
 plot(RGB_2005)
@@ -109,9 +111,10 @@ plot(b2_2005)
 plot(b5_2005)
 plot(NDSI_2005)
 plot(NDSI_2005c)
+
 dev.off()
 
-#2013 data
+#Dati 2013
 setwd("C:/Users/utente/Desktop/Adamello/2013")
 RGB_2013<-rast("RGB_2013.tif")
 plot(RGB_2013)
@@ -142,9 +145,10 @@ plot(b3_2013)
 plot(b6_2013)
 plot(NDSI_2013)
 plot(NDSI_2013c)
+
 dev.off()
 
-#2021 data
+#Dati 2021
 setwd("C:/Users/utente/Desktop/Adamello/2021")
 RGB_2021<-rast("RGB_2021.tif")
 plot(RGB_2021)
@@ -175,10 +179,9 @@ plot(b6_2021)
 plot(NDSI_2021)
 plot(NDSI_2021c)
 
-
 dev.off()
 
-#2023 data
+#Dati 2023
 setwd("C:/Users/utente/Desktop/Adamello/2023")
 RGB_2023<-rast("RGB_2023.tif")
 plot(RGB_2023)
@@ -211,6 +214,7 @@ plot(NDSI_2023c)
 
 dev.off()
 
+#Plotto insieme tutte le immagini dell'indice NDSI che mi evidenziano la progressiva diminuizione dell'estensione del ghiacciaio
 par(mfrow=c(2,3))
 plot(NDSI_1986c)
 plot(NDSI_1997c)
@@ -220,6 +224,8 @@ plot(NDSI_2021c)
 plot(NDSI_2023c)
 
 dev.off()
+
+#Creo un data frame 
 class <- c("glacier","no glacier")
 perc1986 <- c(28,72)
 perc1997 <- c(25,75)
@@ -231,7 +237,7 @@ perc2023 <- c(8,92)
 tabout <- data.frame(class,perc1986,perc1997,perc2005,perc2013,perc2021,perc2023)
 tabout
 
-
+#Grafici per osservare le differenze delle percentuali e la progressiva regressione del ghiacciaio
 p1986 <- ggplot(tabout, aes(x=class, y=perc1986, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("1986")+ylim(c(0,100))
 p1997 <- ggplot(tabout, aes(x=class, y=perc1997, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("1997")+ylim(c(0,100))
 p2005 <- ggplot(tabout, aes(x=class, y=perc2005, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2005")+ylim(c(0,100))
@@ -239,12 +245,13 @@ p2013 <- ggplot(tabout, aes(x=class, y=perc2013, color=class))+geom_bar(stat="id
 p2021 <- ggplot(tabout, aes(x=class, y=perc2021, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2021")+ylim(c(0,100))
 p2023 <- ggplot(tabout, aes(x=class, y=perc2023, color=class))+geom_bar(stat="identity", fill="white")+ggtitle("2023")+ylim(c(0,100))
 
-# Utilizzare patchwork per combinare i grafici
+# Utilizzo patchwork per combinare i grafici
 combined_plot <- p1986 + p1997 + p2005 + p2013 + p2021 + p2023
 print(combined_plot)
 
-sup_foto<-16.872413
-sup1986<-sup_foto*0.2831654
+#Calcolo la superficie del Ghiacciaio negli anni presi in esame: 
+sup_foto<-16.872413 #La superficie dell'aerea coperta dalle foto è stata calcolata su GIS
+sup1986<-sup_foto*0.2831654 #0.2831654 proviene dalla percentuale decimale 
 sup1986 #4.777684 km²
 sup1997<-sup_foto*0.2464459
 sup1997 #4.158137 km²
@@ -257,13 +264,14 @@ sup2021 #2.439226 km²
 sup2023<-sup_foto*0.08151229
 sup2023 #1.375309 km²
 
+#Creo un secondo data frame con le date e la superficie del ghiacciaio per ogni anno preso in esame
 date <- c("1986", "1997", "2005", "2013", "2021", "2023")
 superficie<- c(sup1986,sup1997,sup2005,sup2013,sup2021,sup2023)
 
 df <- data.frame(date = date, superficie = superficie)
 print(df)
 
-# Creare un grafico a colonne con ggplot2
+# Creo un grafico a colonne che faccia vedere l'andamento dell'estensione del ghiacchiaio
 ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = superficie), vjust = 1.5, hjust = 1, angle = 65, color = "white", size = 2) + labs(title = "Dimensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
 
 ######################################################################
