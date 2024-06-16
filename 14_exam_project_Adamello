@@ -250,7 +250,7 @@ combined_plot <- p1986 + p1997 + p2005 + p2013 + p2021 + p2023
 print(combined_plot)
 
 #Calcolo la superficie del Ghiacciaio negli anni presi in esame: 
-sup_foto<-16.872413 #La superficie dell'aerea coperta dalle foto è stata calcolata su GIS
+sup_foto<-16.872413 #La superficie dell'aerea coperta dalle foto è stata calcolata su QGIS
 sup1986<-sup_foto*0.2831654 #0.2831654 proviene dalla percentuale decimale 
 sup1986 #4.777684 km²
 sup1997<-sup_foto*0.2464459
