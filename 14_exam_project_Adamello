@@ -6,7 +6,7 @@ library(raster)
 library(patchwork)
 
 #Tutte le immagini sono state acquisite dai satelliti Landsat 4-5 per gli anni 1986,1997,2005 e dai satelliti Landsat 8-9 per gli anni 2013,2021,2023 tramite il sito USGS
-#Successivamnete, tramite estrazione con maschera, sono state ottenute immagini più precise????? della zona di interesse
+#Successivamnete, tramite estrazione con maschera, sono state ritagliate le immagini originali per ottenerne altre che coprono esclusivamente solo l'area del progetto (16,87 km²)
 
 #Dati 1986
 #Importo le immagini del 1986, in particolare le bande b2 e b5 che mi serviranno per calcolare l'indice NDSI(Normalized Difference Snow Index)
