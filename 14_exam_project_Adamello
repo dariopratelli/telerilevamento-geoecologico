@@ -269,14 +269,13 @@ regressione_ghiacciaio <- ((sup1986 - sup2023) / sup1986) * 100
 regressione_ghiacciaio #71.21% 
 
 #Creo un secondo data frame con le date e la superficie del ghiacciaio per ogni anno preso in esame
-date <- c("1986", "1997", "2005", "2013", "2021", "2023")
+date<-c("1986", "1997", "2005", "2013", "2021", "2023")
 superficie<- c(sup1986,sup1997,sup2005,sup2013,sup2021,sup2023)
 
-df <- data.frame(date = date, superficie = superficie)
+df<-data.frame(date = date, superficie = superficie)
 print(df)
 
 # Creo un grafico a colonne che faccia vedere l'andamento dell'estensione del ghiacchiaio
-ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = superficie), vjust = 1.5, hjust = 1, angle = 65, color = "white", size = 2) + labs(title = "Estensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
+ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = round(superficie, 2)), vjust = 5.5, hjust = 0.6, color = "white", size = 3.5) + labs(title = "Estensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
 
-######################################################################
 
