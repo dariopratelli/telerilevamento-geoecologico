@@ -1,6 +1,5 @@
 \documentclass{beamer}
-\usepackage{graphicx}% Required for inserting images
-\usepackage{tikz} 
+\usepackage{graphicx}% Required for inserting images 
 \usepackage{ragged2e} %per decentrare le foto
 \usepackage{background} % per mettere immagini come sfondo di un frame
 
@@ -8,7 +7,7 @@
 \usetheme{Singapore}
 \usecolortheme{seahorse}
 
-\title{La regressione del ghiacciaio Adamello}
+\title{La regressione del ghiacciaio dell'Adamello}
 \author{Dario Pratelli}
 \date{June 2024}
 
