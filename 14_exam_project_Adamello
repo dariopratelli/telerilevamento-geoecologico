@@ -6,7 +6,7 @@ library(raster)
 library(patchwork)
 
 #Tutte le immagini sono state acquisite dai satelliti Landsat 4-5 per gli anni 1986,1997,2005 e dai satelliti Landsat 8-9 per gli anni 2013,2021,2023 tramite il sito USGS
-#Successivamnete, tramite il comando estrazione con maschera di QGIS, sono state ritagliate le immagini originali per ottenere altre immagini che coprono esclusivamente solo l'area del progetto (16,87 km²)
+#Successivamnete, tramite il comando estrazione con maschera di QGIS, sono state ritagliate le immagini originali per ottenere altre immagini che coprono esclusivamente l'area del progetto (16,87 km²)
 
 #Dati 1986
 #Importo le immagini del 1986, in particolare le bande b2 e b5 che mi serviranno per calcolare l'indice NDSI(Normalized Difference Snow Index)
@@ -19,7 +19,7 @@ b5_1986<-rast("b5_1986.tif") #importo la banda dello SWIR (Short-Wave Infrared)
 plot(b5_1986)
 NDSI_1986<-(b2_1986-b5_1986)/(b2_1986+b5_1986) #Calcolo l'indece NDSI: (green-SWIR)/(green+SWIR)
 plot(NDSI_1986)
-NDSI_1986c<-NDSI_1986>0.4 #metto una soglia di 0.4: valori dell'NDSI superiori a 0.4 sono associati alla presenza di neve, mentre valori inferiori a 0.4 possono indicare altre superfici
+NDSI_1986c<-NDSI_1986>0.4 #valori dell'NDSI superiori a 0.4 sono associati alla presenza di neve, mentre valori inferiori a 0.4 possono indicare altre superfici
 plot(NDSI_1986c)
 
 #Calcolo la frequenza dei valori 
