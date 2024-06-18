@@ -1,4 +1,4 @@
-#Time serie sulla regressione del Ghiacciaio dell'Adamello 
+#Time series sulla regressione del Ghiacciaio dell'Adamello 
 
 library(terra)
 library(ggplot2) 
