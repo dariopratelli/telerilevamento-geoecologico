@@ -276,6 +276,6 @@ df<-data.frame(date = date, superficie = superficie)
 print(df)
 
 # Creo un grafico a colonne che faccia vedere l'andamento dell'estensione del ghiacchiaio
-ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = round(superficie, 2)), vjust = 5.5, hjust = 0.6, color = "white", size = 3.5) + labs(title = "Estensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie") + theme_minimal()
+ggplot(df, aes(x = date, y = superficie)) + geom_bar(stat = "identity", fill = "blue") +geom_text(aes(label = round(superficie, 2)), vjust = 5.5, hjust = 0.6, color = "white", size = 3.5) + labs(title = "Estensione ghiacciaio Adamello 1986-2023", x = "Data", y = "Superficie"~ km^2) + theme_minimal()
 
 
