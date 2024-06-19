@@ -1,13 +1,13 @@
 \documentclass{beamer}
-\usepackage{graphicx}% Required for inserting images 
+\usepackage{graphicx}% Required for inserting images
 \usepackage{ragged2e} %per decentrare le foto
 \usepackage{background} % per mettere immagini come sfondo di un frame
-
+\usepackage{tikz}
 
 \usetheme{Singapore}
 \usecolortheme{seahorse}
 
-\title{La regressione del ghiacciaio dell'Adamello}
+\title {La regressione del ghiacciaio dell'Adamello}
 \author{Dario Pratelli}
 \date{June 2024}
 
@@ -19,6 +19,8 @@
       \includegraphics[width=\paperwidth,height=\paperheight]{Schermata-2022-04-23-alle-13.54.16-1280x720.png}
     };
   \end{tikzpicture}
+
+
 \end{frame}
 
 
@@ -26,7 +28,7 @@
 
 
 \begin{frame}{Il ghiacciaio dell'Adamello}
-    Il ghiacciaio dell'Adamello è \textbf{il più grande ghiacciaio d'Italia}. Si trova in Lombardia in alta Val Camonica e per  una piccola parte in Trentino-Alto Adige (effluenza del Mandrone). Si distende con poca inclinazione tra una quota massima di 3530 m s.l.m. ed una quota minima di 2550 m s.l.m . 
+    Il ghiacciaio dell'Adamello è \textbf{il più grande ghiacciaio d'Italia}. Si trova tra la Lombardia e il Trentino-Alto Adige (Provincie di Brescia e Trento); nel Gruppo dell'Adamello, un massiccio montuoso delle Alpi Retiche meridionali. Si distende con poca inclinazione tra una quota massima di 3530 m s.l.m. ed una quota minima di 2550 m s.l.m . 
     \`E classificato come altopiano con lingue radiali, ovvero un ghiacciaio centrale dalla quale derivano differenti lingue defluenti.
 
 \begin{figure}
@@ -104,7 +106,7 @@
 \end{frame}
 
 \begin{frame}
-   Immagini dell' anno 1986 utilizzate per calcolare l'indice NDSI 
+   Immagini dell' anno 1986 utilizzate per calcolare l'indice NDSI: Immagine RGB, banda 2 e banda 5.
     \begin{figure}
         \centering
         \includegraphics[width=.3\linewidth]{RGB_1986.jpg}
@@ -116,11 +118,11 @@
 \begin{frame}{Passaggi del progetto}
  \begin{itemize}
     \item Ricerca e download delle immagini satellitari dal sito USGS
-    \item \pause Utilizzo del comando "estrazione con maschera" di QGIS per ottenere foto corrispondenti all'area di interesse (16,87km\(^2\))
-    \item \pause Caricamento delle immagini su R studio
-    \item \pause Calcolo dell'indice NDSI 
-    \item \pause Calcolo delle percentuali del terreno coperto dalla neve per ogni anno preso in esame
-    \item \pause Calcolo della superficie  del ghiacciaio per ogni anno preso in esame
+    \item Utilizzo del comando "estrazione con maschera" di QGIS per ottenere immagini corrispondenti all'area di interesse (16,87km\(^2\))
+    \item Caricamento delle immagini su R studio
+    \item Calcolo dell'indice NDSI 
+    \item Calcolo delle percentuali del terreno coperto dalla neve per ogni anno preso in esame
+    \item Calcolo della superficie  del ghiacciaio per ogni anno preso in esame
 
 \end{itemize}  
 \end{frame}
@@ -148,7 +150,7 @@ Dalle immagini derivate dal calcolo  delll'indice NDSI è evidente la regression
         \includegraphics[width=0.9\linewidth]{Grafici_percentuali.png}
         \label{fig:enter-label}
     \end{figure}
-I grafici ci dicono che il terreno coperto dal ghiacciaio all'interno dell'area di interesse è passato dal 28\%(1986) a 8\% (2023).
+I grafici ci dicono che il terreno coperto dal ghiacciaio all'interno dell'area di interesse è passato dal 28\%(1986) all' 8\% (2023).
 \end{figure}
 
 \end{frame}
@@ -158,12 +160,12 @@ I grafici ci dicono che il terreno coperto dal ghiacciaio all'interno dell'area 
 
     \begin{column}{0.7\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{Grafico-colonne_estensione.png}
-    \end{column}
+        \includegraphics[width=\linewidth]{Supkmq.jpeg}
+                \end{column}
 
     \begin{column}{0.3\textwidth}
         \justifying
-        La superficie del ghiacciaio nel mese di agosto è passata da 4,78km\(^2\) del 1986 a 1,37km\(^2\) del 2023, ovvero una preoccupante differenza del 71,2\%.
+        La superficie del ghiacciaio nel mese di agosto è passata da 4,78km\(^2\) del 1986 a 1,38km\(^2\) del 2023, ovvero una preoccupante differenza del 71,2\%.
     \end{column}
 
 \end{columns}  
@@ -176,3 +178,4 @@ Questi dati ci confermano la regressione del ghiacciaio Adamello; seguendo un tr
     \end{frame}
 
 \end{document}
+
