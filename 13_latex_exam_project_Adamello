@@ -1,8 +1,7 @@
 \documentclass{beamer}
 \usepackage{graphicx}% Required for inserting images
 \usepackage{ragged2e} %per decentrare le foto
-\usepackage{background} % per mettere immagini come sfondo di un frame
-\usepackage{tikz}
+\usepackage{tikz} % per mettere immagini come sfondo di un frame
 
 \usetheme{Singapore}
 \usecolortheme{seahorse}
